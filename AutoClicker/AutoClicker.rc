@@ -77,14 +77,14 @@ STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSM
 CAPTION "Options"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    DEFPUSHBUTTON   "OK", IDOK, 71, 66, 47, 14
-    GROUPBOX        "Settings", IDC_STATIC, 7, 7, 167, 54
-    COMBOBOX        IDC_COMBO1, 70, 22, 48, 30, CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "Mouse Button:", IDC_STATIC, 14, 24, 48, 8
-    EDITTEXT        IDC_DELAY_EDIT, 70, 40, 48, 12, ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "Click Delay:", IDC_STATIC, 24, 42, 39, 8
-    LTEXT           "milliseconds", IDC_STATIC, 124, 42, 40, 8
-    PUSHBUTTON      "Cancel", IDCANCEL, 124, 66, 50, 14
+    DEFPUSHBUTTON   "OK",IDOK,71,66,47,14
+    GROUPBOX        "Settings",IDC_STATIC,7,7,167,54
+    COMBOBOX        IDC_COMBO1,70,22,48,30,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Mouse Button:",IDC_STATIC,14,24,48,8
+    EDITTEXT        IDC_DELAY_EDIT,70,40,48,12,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Click Delay:",IDC_STATIC,24,42,39,8
+    LTEXT           "milliseconds",IDC_STATIC,124,42,40,8
+    PUSHBUTTON      "Cancel",IDCANCEL,124,66,50,14
 END
 
 
@@ -99,9 +99,7 @@ BEGIN
     IDD_DIALOG1, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 303
         TOPMARGIN, 7
-        BOTTOMMARGIN, 170
     END
 END
 #endif    // APSTUDIO_INVOKED
@@ -115,6 +113,45 @@ END
 IDD_DIALOG1 AFX_DIALOG_LAYOUT
 BEGIN
     0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080904b0"
+        BEGIN
+            VALUE "CompanyName", "Lumpros Inc."
+            VALUE "FileDescription", "A Simple Auto Clicker"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "AutoClick.exe"
+            VALUE "LegalCopyright", "Copyright (C) 2021"
+            VALUE "OriginalFilename", "AutoClic.exe"
+            VALUE "ProductName", "AutoClicker"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x809, 1200
+    END
 END
 
 #endif    // English (United Kingdom) resources

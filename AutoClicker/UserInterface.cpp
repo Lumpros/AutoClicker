@@ -16,6 +16,7 @@ INT     iDelay = 100;
 LPWSTR  lpszDelay = NULL;
 Button* pToggleButton, * pQuitButton;
 Clicker autoClicker;
+BOOL    isDialogOpen = false;
 
 /* This should be an atomic but I don't care enough right now*/
 volatile BOOL   isCountingDown = false;
@@ -154,6 +155,8 @@ INT_PTR CALLBACK OptionsDlgProcedure(HWND hWnd, UINT message, WPARAM wParam, LPA
 	switch (message)
 	{
 	case WM_INITDIALOG:
+		isDialogOpen = true;
+		autoClicker.Disable();
 		InitializeDialogControlData(hWnd);
 		break;
 
@@ -166,11 +169,13 @@ INT_PTR CALLBACK OptionsDlgProcedure(HWND hWnd, UINT message, WPARAM wParam, LPA
 		{
 		case IDOK:
 			SaveSettings(hWnd);
+			isDialogOpen = false;
 			EndDialog(hWnd, IDOK);
 			break;
 			
 		case IDCANCEL:
 			EndDialog(hWnd, IDCANCEL);
+			isDialogOpen = false;
 			break;
 		}
 		break;
@@ -286,4 +291,12 @@ void ResizeControls(LPARAM lParam)
 
 	AdjustToggleButtonRect(uiWidth, uiHeight, dpiScale);
 	AdjustQuitButtonRect(uiWidth, uiHeight, dpiScale);
+}
+
+void HandleHotkeyMessage(HWND hWnd, WPARAM wParam)
+{
+	if (wParam == TOGGLE_HOTKEY_ID && !isDialogOpen)
+	{
+		ToggleClicker(hWnd);
+	}
 }

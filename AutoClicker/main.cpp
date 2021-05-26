@@ -16,7 +16,6 @@
 #include "resource.h"
 
 #define CLASS_NAME L"MainWindow"
-#define TOGGLE_HOTKEY_ID 150
 
 LRESULT CALLBACK WindowProcedure(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
@@ -124,8 +123,7 @@ LRESULT CALLBACK WindowProcedure(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
 		return 0;
 
 	case WM_HOTKEY:
-		if (wParam == TOGGLE_HOTKEY_ID)
-			ToggleClicker(hWnd);
+		HandleHotkeyMessage(hWnd, wParam);
 		return 0;
 
 	case WM_CLOSE:
